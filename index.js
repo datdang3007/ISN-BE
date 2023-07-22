@@ -21,7 +21,7 @@ app.use(express.static("public"));
 
 const io = new Server(server, {
   cors: {
-    origin: 'https://internet-social-network.vercel.app/',
+    origin: 'https://internet-social-network.vercel.app',
     methods: ['GET', 'POST'],
   },
 });
@@ -69,5 +69,5 @@ io.on('connection', (socket) => {
   });
 });
 
-const PORT = process.env.PORT || 4000;
-server.listen(PORT, () => 'Server is running');
+const PORT = process.env.PORT || 4000
+server.listen(PORT, () => 'Server is running on port 4000');
