@@ -60,12 +60,15 @@ io.on('connection', (socket) => {
     io.emit('user-chat', socket.id, data.name, data.message)
   });
 
-  socket.on("join-room", (roomID, userID) => {
+  socket.on("join-room", (roomID, peerId, userId) => {
     socket.join(roomID);
     setTimeout(()=>{
-      console.log(roomID, userID);
-      socket.to(roomID).emit("user-connected", userID);
+      socket.to(roomID).emit("user-connected", peerId, userId);
     }, 1000)
+  });
+
+  socket.on('disconnect', function() {
+    socket.broadcast.emit("user-disconnected", socket.id); 
   });
 });
 
