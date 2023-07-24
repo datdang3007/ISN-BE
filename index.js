@@ -68,6 +68,7 @@ io.on('connection', (socket) => {
   });
 
   socket.on('disconnect', function() {
+    console.log('user-disconnected', socket.id);
     socket.broadcast.emit("user-disconnected", socket.id); 
   });
 });
