@@ -26,6 +26,9 @@ const io = new Server(server, {
   },
 });
 
+io.set('heartbeat timeout', 50000);
+io.set('heartbeat interval', 2000);
+
 const ListMeetingRoom = []
 
 app.post('/join-meeting-room', (req, res) => {
